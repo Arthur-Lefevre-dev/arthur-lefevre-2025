@@ -7,28 +7,26 @@
           <div
             class="w-32 md:w-40 rounded-full ring ring-primary-content ring-offset-base-100 ring-offset-2 animate-float"
           >
-            <img src="/avatar.jpg" alt="Arthur Lefevre" />
+            <img src="/avatar.png" alt="Arthur Lefevre" />
           </div>
         </div>
 
         <!-- Introduction -->
         <h1 class="text-4xl md:text-6xl font-bold mb-4">
-          {{ $t("hero.greeting") }}
+          Bonjour, je suis
           <span
             class="text-base-content bg-base-100 px-4 py-2 rounded-lg inline-block mt-2"
           >
-            {{ $t("hero.name") }}
+            Arthur Lefevre
           </span>
         </h1>
 
         <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-          {{
-            $t("hero.title", {
-              vue: $t("hero.vue"),
-              node: $t("hero.node"),
-              scraping: $t("hero.scraping"),
-            })
-          }}
+          {{ $t("hero.subtitle") }}
+        </p>
+
+        <p class="text-lg mb-8 max-w-2xl mx-auto opacity-80">
+          {{ $t("hero.description") }}
         </p>
 
         <!-- Skills Pills -->
@@ -45,18 +43,18 @@
         <!-- Location -->
         <div class="flex items-center justify-center mb-8 opacity-80">
           <Icon name="heroicons:map-pin" size="20" class="mr-2" />
-          <span>{{ $t("hero.location") }}</span>
+          <span>Belgique</span>
         </div>
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <a href="#projects" class="btn btn-accent btn-lg gap-2">
             <Icon name="heroicons:eye" size="20" />
-            {{ $t("hero.viewProjects") }}
+            {{ $t("hero.cta") }}
           </a>
           <a href="#contact" class="btn btn-outline btn-lg gap-2">
             <Icon name="heroicons:envelope" size="20" />
-            {{ $t("hero.contact") }}
+            Me contacter
           </a>
         </div>
 
@@ -86,9 +84,7 @@
     <div
       class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
     >
-      <a href="#about" class="btn btn-circle btn-ghost text-primary-content">
-        <Icon name="heroicons:chevron-down" size="24" />
-      </a>
+
     </div>
   </section>
 </template>
@@ -107,43 +103,6 @@ const skills = [
   "OSINT",
   "API Development",
 ];
-
-// Simple translation function
-const $t = (key, params = {}) => {
-  const translations = {
-    hero: {
-      greeting: "Bonjour, je suis",
-      name: "Arthur Lefevre",
-      title: "Développeur Full Stack spécialisé en {vue}, {node} et {scraping}",
-      vue: "Vue.js/Nuxt.js",
-      node: "Node.js",
-      scraping: "Data Scraping",
-      location: "Belgique",
-      viewProjects: "Voir mes projets",
-      contact: "Me contacter",
-    },
-  };
-
-  const keys = key.split(".");
-  let value = translations;
-
-  for (const k of keys) {
-    if (value && typeof value === "object" && k in value) {
-      value = value[k];
-    } else {
-      return key;
-    }
-  }
-
-  // Simple parameter replacement
-  if (typeof value === "string" && Object.keys(params).length > 0) {
-    Object.keys(params).forEach((param) => {
-      value = value.replace(`{${param}}`, params[param]);
-    });
-  }
-
-  return value;
-};
 </script>
 
 <style scoped>

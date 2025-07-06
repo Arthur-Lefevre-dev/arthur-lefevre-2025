@@ -2,20 +2,20 @@
 @import "tailwindcss/preflight";
 @import "tailwindcss/utilities";
 
-/* Global Base Styles */
-html {
-  scroll-behavior: smooth;
-  line-height: 1.6;
+/* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: hsl(var(--bc));
+  background-color: hsl(var(--b1));
 }
 
 /* Custom Animation Classes */
@@ -79,26 +79,193 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Custom Hero Gradient */
+/* Enhanced contrast for better readability */
 .hero-gradient {
-  background: linear-gradient(135deg, hsl(var(--p)) 0%, hsl(var(--s)) 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
 }
 
-/* Card Hover Effects */
-.card-hover {
-  transition: all 0.3s ease;
+.hero-gradient * {
+  color: white !important;
 }
 
-.card-hover:hover {
-  transform: translateY(-5px);
+.hero-gradient .text-base-content {
+  color: #1e293b !important;
 }
 
-/* Responsive Design Utilities */
+.hero-gradient .bg-base-100 {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Improved text contrast */
+.text-primary-content {
+  color: white !important;
+}
+
+.text-base-content {
+  color: hsl(var(--bc)) !important;
+}
+
+.text-base-content\/80 {
+  color: hsl(var(--bc) / 0.8) !important;
+}
+
+/* Enhanced button styles */
+.btn {
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-accent {
+  background: #10b981;
+  color: white;
+  border: none;
+}
+
+.btn-accent:hover {
+  background: #059669;
+  color: white;
+}
+
+.btn-outline {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+/* Card improvements */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-weight: 600;
+  color: hsl(var(--bc));
+}
+
+/* Badge improvements */
+.badge {
+  font-weight: 500;
+  border-radius: 0.375rem;
+}
+
+.badge-accent {
+  background: #10b981;
+  color: white;
+  border: none;
+}
+
+/* Navigation improvements */
+.navbar {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar a {
+  color: hsl(var(--bc));
+  transition: color 0.2s ease;
+}
+
+.navbar a:hover {
+  color: hsl(var(--p));
+}
+
+/* Dark theme specific improvements */
+[data-theme="dark"] .hero-gradient {
+  background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+}
+
+[data-theme="dark"] .text-primary-content {
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .hero-gradient .text-base-content {
+  color: #1e293b !important;
+}
+
+/* Animation improvements */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--b2));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--p));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--pf));
+}
+
+/* Responsive improvements */
 @media (max-width: 768px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .hero h1 {
+    font-size: 2.5rem;
   }
+  
+  .hero p {
+    font-size: 1.125rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+/* Focus improvements for accessibility */
+.btn:focus,
+.dropdown-content a:focus,
+button:focus {
+  outline: 2px solid hsl(var(--p));
+  outline-offset: 2px;
+}
+
+/* Language switcher active state */
+.dropdown-content a.active {
+  background: hsl(var(--p));
+  color: hsl(var(--pc));
+}
+
+/* Enhanced transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 /* Selection Styles */
